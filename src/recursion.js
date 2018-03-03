@@ -169,8 +169,6 @@ var multiply = function(x, y) {
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods.
 var divide = function(x, y) {
-  console.log('x:', x);
-  console.log('y:', y);
   var num = x - y;
   if (x < 0 && y < 0) {
     var positiveX = x - x - x;
