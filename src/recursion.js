@@ -169,6 +169,32 @@ var multiply = function(x, y) {
 // 13. Write a function that divides two numbers without using the / operator or
 // Math methods.
 var divide = function(x, y) {
+  console.log('x:', x);
+  console.log('y:', y);
+  var num = x - y;
+  if (x < 0 && y < 0) {
+    var positiveX = x - x - x;
+    var positiveY = y - y - y;
+    return divide(positiveX, positiveY);
+  } else if (x < 0) {
+    var positiveX = x - x - x;
+    var positiveResult = divide(positiveX, y);
+    return positiveResult - positiveResult - positiveResult;
+  } else if (y < 0) {
+    var positiveY = y - y - y;
+    var positiveResult = divide(x, positiveY);
+    return positiveResult - positiveResult - positiveResult;
+  } else if (y === 0) {
+    return NaN;
+  } else if (y === 1) {
+    return x;
+  } else if (x === 0) {
+    return 0;
+  } else if (num <= 0) {
+    return 0;
+  } else {
+    return 1 + divide(num, y);
+  }
 };
 
 // 14. Find the greatest common divisor (gcd) of two positive numbers. The GCD of two
