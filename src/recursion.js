@@ -305,7 +305,6 @@ var rMap = function(array, callback) {
   if (!arr.length) {
     return [];
   } else {
-    console.log(callback);
     var val = callback(arr.shift());
     return [val].concat(rMap(arr, callback));
   }
