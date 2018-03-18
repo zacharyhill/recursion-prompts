@@ -327,14 +327,48 @@ var rMap = function(array, callback) {
 // var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
 // countKeysInObj(obj, 'r') // 1
 // countKeysInObj(obj, 'e') // 2
-var countKeysInObj = function(obj, key) {
+var countKeysInObj = function(obj, target) {
+  var counter = 0;
+  // iterate over each key/value pair
+  for (var key in obj) {
+    var prop = obj[key];
+    // check if key is target
+    if (key === target) {
+      // increment counter
+      counter += 1;
+    }
+    // check if value is object
+    if (typeof prop === 'object') {
+      // recurse on children and add to counter
+      counter += countKeysInObj(prop, target);
+    }
+  }
+  // return counter
+  return counter;
 };
 
 // 23. Write a function that counts the number of times a value occurs in an object.
 // var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
 // countValuesInObj(obj, 'r') // 2
 // countValuesInObj(obj, 'e') // 1
-var countValuesInObj = function(obj, value) {
+var countValuesInObj = function(obj, target) {
+  var counter = 0;
+  // iterate over each key/value pair
+  for (var key in obj) {
+    var prop = obj[key];
+    // check if value is target
+    if (prop === target) {
+      // increment counter
+      counter += 1;
+    }
+    // check if value is object
+    if (typeof prop === 'object') {
+      // recurse on children and add to counter
+      counter += countValuesInObj(prop, target);
+    }
+  }
+  // return counter
+  return counter;
 };
 
 // 24. Find all keys in an object (and nested objects) by a provided name and rename
